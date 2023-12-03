@@ -1,0 +1,82 @@
+<div>
+  <label for="pokemonSelect">Selecciona un Pokémon:</label>
+  <select id="pokemonSelect" [(ngModel)]="selectedPokemon" (change)="onPokemonChange()">
+    <option value="pikachu">Pikachu</option>
+    <option value="raichu">Raichu</option>
+  </select>
+</div>
+
+<div class="ctn-cards">
+  <div class="cards" *ngIf="selectedPokemon === 'pikachu' && pikachu">
+    <div>
+      <label for="infoSelect">Selecciona información:</label>
+      <select id="infoSelect" [(ngModel)]="selectedInfo" (change)="onInfoChange()">
+        <option value="general">General</option>
+        <option value="abilities">Habilidades</option>
+        <option value="moves">Movimientos</option>
+      </select>
+    </div>
+
+    <ng-container *ngIf="selectedInfo === 'general'">
+      <p>Name: {{ pikachu.name }}</p>
+    </ng-container>
+
+    <ng-container *ngIf="selectedInfo === 'abilities'">
+      <p>Abilities:</p>
+      <ul>
+        <li *ngFor="let ability of pikachu.abilities">
+          {{ ability.ability.name }}
+        </li>
+      </ul>
+    </ng-container>
+
+    <ng-container *ngIf="selectedInfo === 'moves'">
+      <p>Moves:</p>
+      <ul>
+        <li *ngFor="let move of pikachu.moves">
+          {{ move.move.name }}
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+
+  <div class="cards" *ngIf="selectedPokemon === 'raichu' && raichu">
+    <div>
+      <label for="infoSelect">Selecciona información:</label>
+      <select id="infoSelect" [(ngModel)]="selectedInfo" (change)="onInfoChange()">
+        <option value="general">General</option>
+        <option value="abilities">Habilidades</option>
+        <option value="moves">Movimientos</option>
+      </select>
+    </div>
+
+    <ng-container *ngIf="selectedInfo === 'general'">
+      <p>Name: {{ raichu.name }}</p>
+    </ng-container>
+
+    <ng-container *ngIf="selectedInfo === 'abilities'">
+      <p>Abilities:</p>
+      <ul>
+        <li *ngFor="let ability of raichu.abilities">
+          {{ ability.ability.name }}
+        </li>
+      </ul>
+    </ng-container>
+
+    <ng-container *ngIf="selectedInfo === 'moves'">
+      <p>Moves:</p>
+      <ul>
+        <li *ngFor="let move of raichu.moves">
+          {{ move.move.name }}
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+</div>
+
+
+
+
+
+ 
+
